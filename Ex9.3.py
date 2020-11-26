@@ -21,4 +21,3 @@ class User():
 user = User('md.', 'uzzal', 'pakshia', 'kalukhali', 'rajbari')
 user.describe_user()
 user.greed_user()
-        
