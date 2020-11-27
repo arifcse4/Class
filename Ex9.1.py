@@ -2,6 +2,7 @@ class Restaurant():
     def __init__(self, restaurant_name, *cuisine_type):
         self.name = restaurant_name
         self.cuisine = cuisine_type
+        self.number_served = 0
 
     def describe_restaurant(self):
         print(f"Restaurant name is {self.name.upper()}")
@@ -14,16 +15,24 @@ class Restaurant():
     def open_restaurant(self, message):
         print('Restaurant is ' + message.upper())
 
+    def set_number_served(self, number):
+        self.number_served = number
+
+    def increment_number_served(self, increment):
+        self.number_served += increment
 
 restaurant = Restaurant('take a bite', 'rice', 'fish', 'meat', 'dal')
 restaurant.describe_restaurant()
 restaurant.open_restaurant('open')
+restaurant.set_number_served(100)
+active = True
+while active:
+    customer = input("Total customer: ")
+    if customer == 'closed':
+        restaurant.open_restaurant(customer)
+        active = False
+    else:
+        restaurant.increment_number_served(int(customer))
+        print("Customers the restaurant has served: " + str(restaurant.number_served))
 
-restaurant2 = Restaurant("Al Kaderia", 'fride chicken', 'nan', 'morog polao')
-restaurant2.describe_restaurant()
-restaurant2.open_restaurant('closed')
-
-restaurant3 = Restaurant('red chili', 'bargur', 'coffee', 'pizza')
-restaurant3.describe_restaurant()
-restaurant3.open_restaurant('closed')
-
+print("Customers the restaurant has served: " + str(restaurant.number_served))
