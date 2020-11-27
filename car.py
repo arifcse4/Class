@@ -15,4 +15,5 @@ class Car():
 car = Car('audi', 'a4', 2016)
 ret = car.describe_name()
 print(ret)
+car.odometer_reading = 23
 car.read_odometer()
