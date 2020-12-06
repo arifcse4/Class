@@ -20,6 +20,8 @@ class Car():
     
     def increase_odometer(self, miles):
         self.odometer_reading += miles
+    def fill_gas_tank(self):
+        print("Need to fill gas tank.")
 
 class ElectricCar(Car):
     def __init__(self, make, model, year):
@@ -28,6 +30,10 @@ class ElectricCar(Car):
     def describe_battery(self):
         print(f"This car has a {str(self.battery_size)}-kWh battery.")
 
+    def fill_gas_tank(self):
+        print("No need to fill gas tank.")
+
 my_tesla = ElectricCar('tesla', 'model s', 2016)
 print(my_tesla.get_descriptive_name())
 my_tesla.describe_battery()
+my_tesla.fill_gas_tank()
