@@ -20,20 +20,27 @@ class Car():
     
     def increase_odometer(self, miles):
         self.odometer_reading += miles
-    def fill_gas_tank(self):
-        print("Need to fill gas tank.")
 
 class ElectricCar(Car):
     def __init__(self, make, model, year):
         super().__init__(make, model, year)
-        self.battery_size = 70
+        self.battery = Battery()
+
+class Battery():
+    def __init__(self, battery_size = 70):
+        self.battery_size = battery_size
+
     def describe_battery(self):
         print(f"This car has a {str(self.battery_size)}-kWh battery.")
-
-    def fill_gas_tank(self):
-        print("No need to fill gas tank.")
+    
+    def get_range(self):
+        if self.battery_size == 70:
+            range = 240
+        elif self.battery_size == 85:
+            range = 270
+        print(f"This car can go approximately {str(range)} miles on a full charge.")
 
 my_tesla = ElectricCar('tesla', 'model s', 2016)
 print(my_tesla.get_descriptive_name())
-my_tesla.describe_battery()
-my_tesla.fill_gas_tank()
+my_tesla.battery.describe_battery()
+my_tesla.battery.get_range()
